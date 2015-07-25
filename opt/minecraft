@@ -24,7 +24,7 @@ touch ops.json
 heap="256m"
 
 echo "Starting: minecraft ${mc_port}"
-eval "java -Xmx${heap} -Xms${heap} -jar forge-1.7.10-10.13.4.1492-1.7.10-universal.jar nogui"
+eval "java -Xmx${heap} -Xms${heap} -jar forge-1.7.10-10.13.4.1492-1.7.10-universal.jar nogui &"
 main_pid=$!
 echo "minecraft started on port: ${port}"
 
