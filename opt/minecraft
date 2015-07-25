@@ -21,11 +21,12 @@ touch banned-players.json
 touch banned-ips.json
 touch ops.json
 
-heap="512m"
+heap="1024m"
 
 echo "Starting: minecraft ${mc_port}"
-eval "java -Xmx${heap} -Xms${heap} -jar minecraft.jar nogui &"
+eval "java -Xmx${heap} -Xms${heap} -jar forge-1.7.10-10.13.4.1492-1.7.10-universal.jar nogui"
 main_pid=$!
+echo "minecraft started on port: ${mc_port}"
 
 trap "kill $ngrok_pid $main_pid" SIGTERM
 trap "kill -9 $ngrok_pid $main_pid; exit" SIGKILL
