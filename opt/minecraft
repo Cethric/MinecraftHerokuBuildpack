@@ -9,7 +9,7 @@ if [ -z "$NGROK_API_TOKEN" ]; then
 fi
 
 if [ -z "$MINECRAFT_RAM" ]; then
-  MINECRAFT_RAM=256
+  export MINECRAFT_RAM=256
 fi
 
 # Start the TCP tunnel
@@ -25,9 +25,9 @@ touch banned-players.json
 touch banned-ips.json
 touch ops.json
 
-heap="$(MINECRAFT_RAM)m"
+heap="${MINECRAFT_RAM}m"
 
-echo "Starting: minecraft ${mc_port}"
+echo "Starting: minecraft ${mc_port} with ${heap} of ram"
 eval "java -Xmx${heap} -Xms${heap} -jar forge-1.7.10-10.13.4.1492-1.7.10-universal.jar nogui &"
 main_pid=$!
 echo "minecraft started on port: ${port}"
